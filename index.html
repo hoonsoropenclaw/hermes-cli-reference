@@ -284,7 +284,113 @@
   .foot a { color: var(--text-dim); text-decoration: none; border-bottom: 1px dotted var(--line-strong); }
   .foot a:hover { color: var(--accent); }
 
-  /* Mode visibility */
+  /* 「怎麼用」說明區 */
+  .how-section {
+    padding: 56px 0 48px;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+  }
+  .how-title { margin-bottom: 28px; }
+  .how-eyebrow {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-mute); display: block; margin-bottom: 6px;
+  }
+  .how-title h2 {
+    font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+    margin: 0; color: var(--text);
+  }
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .how-card {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .how-card-wide { grid-column: 1 / -1; }
+  .how-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px;
+    background: var(--bg-elev-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 14px; font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .how-card h3 {
+    font-size: 16px; font-weight: 600; margin: 0 0 10px;
+    color: var(--text);
+  }
+  .how-card p {
+    font-size: 14px; color: var(--text-dim);
+    margin: 0 0 8px; line-height: 1.6;
+  }
+  .how-card p:last-child { margin-bottom: 0; }
+  .cli-inline {
+    color: var(--accent);
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 13px;
+    padding: 1px 6px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+  }
+  .chat-inline {
+    color: var(--chat-accent);
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 13px;
+    padding: 1px 6px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+  }
+  .how-table {
+    width: 100%; border-collapse: collapse; margin-top: 12px;
+    font-size: 13px;
+  }
+  .how-table th, .how-table td {
+    padding: 10px 12px; text-align: left;
+    border-bottom: 1px solid var(--line);
+  }
+  .how-table th {
+    font-size: 12px; font-weight: 600;
+    color: var(--text-mute);
+    text-transform: uppercase; letter-spacing: 0.05em;
+    background: var(--bg-elev-2);
+  }
+  .how-table tr:last-child td { border-bottom: none; }
+  .how-table td:first-child { color: var(--text-mute); font-weight: 500; }
+  .how-table td code {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 12px;
+    background: var(--bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+  }
+  kbd {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 12px;
+    background: var(--bg-elev-2);
+    border: 1px solid var(--line-strong);
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    padding: 1px 6px;
+    color: var(--text);
+  }
+  @media (max-width: 720px) {
+    .how-grid { grid-template-columns: 1fr; }
+    .how-table { font-size: 12px; }
+    .how-table th, .how-table td { padding: 8px; }
+  }
   .mode-panel { display: none; }
   body.cli-mode .mode-panel[data-mode="cli"] { display: block; }
   body.chat-mode .mode-panel[data-mode="chat"] { display: block; }
@@ -348,6 +454,85 @@
     <div class="mode-desc">/new, /compress, /model, /skills, /approve ...</div>
   </button>
 </div>
+
+<!-- 「怎麼用」說明區 -->
+<section id="how-it-works" class="how-section">
+  <div class="wrap">
+    <div class="how-title">
+      <span class="how-eyebrow">$ how-it-works</span>
+      <h2>怎麼用這個網站</h2>
+    </div>
+    <div class="how-grid">
+
+      <div class="how-card">
+        <div class="how-num">1</div>
+        <h3>確認你要查的是哪種指令</h3>
+        <p>在 <strong>PowerShell/CMD 視窗</strong>輸入的 <code class="cli-inline">hermes ...</code> → 切到「<span style="color:var(--accent)">CLI 指令</span>」分頁。</p>
+        <p>在<strong>跟 Hermes 對話時</strong>輸入的 <code class="chat-inline">/...</code> → 切到「<span style="color:var(--chat-accent)">Slash 指令</span>」分頁。</p>
+      </div>
+
+      <div class="how-card">
+        <div class="how-num">2</div>
+        <h3>用搜尋或分類找指令</h3>
+        <p>頂部搜尋框：<strong>輸入關鍵字即時過濾</strong>（例如 "cron"、"backup"、"/new"）。</p>
+        <p>分類按鈕：<strong>按領域縮小範圍</strong>（例如只看「設定」類別）。</p>
+      </div>
+
+      <div class="how-card">
+        <div class="how-num">3</div>
+        <h3>複製貼上就能用</h3>
+        <p>點任何 <code>copy</code> 按鈕或指令文字本身 → <strong>自動複製到剪貼簿</strong>。</p>
+        <p>回到終端機或對話視窗 → <kbd>Ctrl+V</kbd> 貼上 → Enter 執行。</p>
+      </div>
+
+      <div class="how-card how-card-wide">
+        <h3>兩種指令的差異（重要！）</h3>
+        <table class="how-table">
+          <thead>
+            <tr>
+              <th>特性</th>
+              <th style="color:var(--accent)">CLI 指令</th>
+              <th style="color:var(--chat-accent)">Slash 指令</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>執行位置</td>
+              <td>PowerShell / CMD / Terminal 視窗</td>
+              <td>跟 Hermes 對話的輸入框</td>
+            </tr>
+            <tr>
+              <td>前置詞</td>
+              <td><code>hermes </code> + 子指令</td>
+              <td><code>/</code> + 指令名</td>
+            </tr>
+            <tr>
+              <td>範例</td>
+              <td><code>hermes cron list</code></td>
+              <td><code>/compress</code></td>
+            </tr>
+            <tr>
+              <td>可執行的總數</td>
+              <td>29 個 CLI 指令（含 102 個 subcommand）</td>
+              <td>63 個 slash 命令</td>
+            </tr>
+            <tr>
+              <td>新增/修改設定</td>
+              <td>✅ 可改 config、裝 skill、加 cron</td>
+              <td>❌ 不能改底層設定</td>
+            </tr>
+            <tr>
+              <td>需要 agent 啟動</td>
+              <td>❌ 直接執行</td>
+              <td>✅ 必須在跟 Hermes 對話中</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <section class="search-section">
   <div class="wrap">
