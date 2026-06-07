@@ -64,6 +64,39 @@ const COMMANDS = {
       ]
     ]
   },
+  "update": {
+    "desc": "升級 Hermes Agent 到最新版（從 git pull 並重裝依賴）",
+    "subs": [
+      [
+        "hermes update",
+        "從 git pull 最新版 + 自動重裝 Python 依賴（會自動備份與 stash 你的本地修改）"
+      ],
+      [
+        "hermes update --check",
+        "只看有沒有新版，不真的安裝（確認可升級性用）"
+      ],
+      [
+        "hermes update --yes",
+        "跳過互動確認（config migration、stash restore 自動套用；API key 仍要手動跑 hermes config migrate）"
+      ],
+      [
+        "hermes update --no-backup",
+        "跳過升級前的自動備份（預設會備份到 ~/.hermes/backups/）"
+      ],
+      [
+        "hermes update --backup",
+        "強制升級前備份（即使 config 設成關閉也備）"
+      ],
+      [
+        "hermes update --branch dev",
+        "升級到 dev 分支（預設 main；會自動切換分支並 stash 你現有的未提交修改）"
+      ],
+      [
+        "hermes update --force",
+        "Windows 用：跳過「有另一個 hermes.exe 在跑」檢查（會出現 WinError 32 警告、可能延後重開機替換 .exe）"
+      ]
+    ]
+  },
   "status": {
     "desc": "查看系統狀態",
     "subs": [
