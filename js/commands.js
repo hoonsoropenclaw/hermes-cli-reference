@@ -65,7 +65,7 @@ const COMMANDS = {
     ]
   },
   "update": {
-    "desc": "升級 Hermes Agent 到最新版（從 git pull 並重裝依賴）",
+    "desc": "更新/升級 Hermes Agent 到最新版（從 git pull 並重裝依賴）",
     "subs": [
       [
         "hermes update",
